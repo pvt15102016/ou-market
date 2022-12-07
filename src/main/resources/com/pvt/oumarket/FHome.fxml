@@ -1,0 +1,892 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ButtonBar?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="640.0" prefWidth="1036.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.pvt.oumarket.FHomeController">
+   <children>
+      <HBox maxHeight="150.0" prefHeight="50.0" prefWidth="1024.0" style="-fx-background-color: white;">
+         <children>
+            <Label fx:id="lbStatus" alignment="CENTER_RIGHT" contentDisplay="RIGHT" prefHeight="50.0" prefWidth="1037.0" textAlignment="CENTER" textFill="RED">
+               <graphic>
+                  <Button contentDisplay="CENTER" mnemonicParsing="false" onAction="#LogOut" prefHeight="30.0" prefWidth="120.0" text="Đăng xuất">
+                     <font>
+                        <Font size="14.0" />
+                     </font></Button>
+               </graphic>
+            </Label>
+         </children>
+      </HBox>
+      <TabPane prefHeight="590.0" prefWidth="1024.0" tabClosingPolicy="UNAVAILABLE">
+        <tabs>
+          <Tab fx:id="tabNhanVien" closable="false" text="Nhân viên">
+            <content>
+              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <Button layoutX="13.0" layoutY="464.0" mnemonicParsing="false" onAction="#addNhanVien" prefHeight="50.0" prefWidth="127.0" text="Thêm nhân viên">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </Button>
+                        <TableView fx:id="tbNhanVien" layoutX="475.0" layoutY="100.0" prefHeight="430.0" prefWidth="550.0" />
+                        <Button layoutX="153.0" layoutY="464.0" mnemonicParsing="false" onAction="#CapNhatNhanVien" prefHeight="50.0" prefWidth="174.0" text="Sửa thông tin nhân viên">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </Button>
+                        <Button layoutX="341.0" layoutY="464.0" mnemonicParsing="false" onAction="#xoaNhanVienHandler" prefHeight="50.0" prefWidth="110.0" text="Xóa nhân viên">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </Button>
+                        <VBox layoutX="17.0" layoutY="14.0" prefHeight="450.0" prefWidth="120.0">
+                           <children>
+                              <Label prefHeight="40.0" prefWidth="100.0" text="Mã nhân viên">
+                                 <VBox.margin>
+                                    <Insets bottom="5.0" />
+                                 </VBox.margin>
+                                 <font>
+                                    <Font size="14.0" />
+                                 </font>
+                              </Label>
+                              <Label layoutX="10.0" layoutY="10.0" prefHeight="40.0" prefWidth="111.0" text="Họ tên nhân viên">
+                                 <font>
+                                    <Font size="14.0" />
+                                 </font>
+                                 <VBox.margin>
+                                    <Insets bottom="5.0" />
+                                 </VBox.margin>
+                              </Label>
+                              <Label layoutX="10.0" layoutY="71.0" prefHeight="40.0" prefWidth="100.0" text="Ngày vào làm">
+                                 <font>
+                                    <Font size="14.0" />
+                                 </font>
+                                 <VBox.margin>
+                                    <Insets bottom="5.0" />
+                                 </VBox.margin>
+                              </Label>
+                              <Label layoutX="10.0" layoutY="132.0" prefHeight="40.0" prefWidth="100.0" text="Ngày kết thúc">
+                                 <font>
+                                    <Font size="14.0" />
+                                 </font>
+                                 <VBox.margin>
+                                    <Insets bottom="5.0" />
+                                 </VBox.margin>
+                              </Label>
+                              <Label layoutX="10.0" layoutY="192.0" prefHeight="40.0" prefWidth="120.0" text="Số điện thoại">
+                                 <font>
+                                    <Font size="14.0" />
+                                 </font>
+                                 <VBox.margin>
+                                    <Insets bottom="5.0" />
+                                 </VBox.margin>
+                              </Label>
+                              <Label layoutX="10.0" layoutY="253.0" prefHeight="40.0" prefWidth="100.0" text="CMND">
+                                 <font>
+                                    <Font size="14.0" />
+                                 </font>
+                                 <VBox.margin>
+                                    <Insets bottom="5.0" />
+                                 </VBox.margin>
+                              </Label>
+                              <Label layoutX="10.0" layoutY="234.0" prefHeight="40.0" prefWidth="100.0" text="Mã chức vụ">
+                                 <font>
+                                    <Font size="14.0" />
+                                 </font>
+                                 <VBox.margin>
+                                    <Insets bottom="5.0" />
+                                 </VBox.margin>
+                              </Label>
+                              <Label layoutX="10.0" layoutY="279.0" prefHeight="40.0" prefWidth="100.0" text="Tiền lương">
+                                 <font>
+                                    <Font size="14.0" />
+                                 </font>
+                                 <VBox.margin>
+                                    <Insets bottom="5.0" />
+                                 </VBox.margin>
+                              </Label>
+                              <Label layoutX="10.0" layoutY="319.0" prefHeight="40.0" prefWidth="113.0" text="Mã chi nhánh">
+                                 <font>
+                                    <Font size="14.0" />
+                                 </font>
+                                 <VBox.margin>
+                                    <Insets bottom="5.0" />
+                                 </VBox.margin>
+                              </Label>
+                              <Label layoutX="10.0" layoutY="359.0" prefHeight="40.0" prefWidth="110.0" text="Mã tài khoản">
+                                 <font>
+                                    <Font size="14.0" />
+                                 </font>
+                                 <VBox.margin>
+                                    <Insets bottom="5.0" />
+                                 </VBox.margin>
+                              </Label>
+                           </children>
+                        </VBox>
+                        <VBox layoutX="146.0" layoutY="14.0" prefHeight="450.0" prefWidth="280.0">
+                           <children>
+                              <TextField fx:id="txtMaNV" prefHeight="40.0" promptText="Nhập mã nhân viên">
+                                 <VBox.margin>
+                                    <Insets bottom="5.0" />
+                                 </VBox.margin>
+                              </TextField>
+                              <TextField fx:id="txtTenNV" prefHeight="40.0" promptText="Nhập họ tên nhân viên">
+                                 <VBox.margin>
+                                    <Insets bottom="5.0" />
+                                 </VBox.margin>
+                              </TextField>
+                              <DatePicker fx:id="ngayBatDau" prefHeight="40.0" prefWidth="300.0" promptText="Chọn ngày vào làm">
+                                 <VBox.margin>
+                                    <Insets bottom="5.0" />
+                                 </VBox.margin>
+                              </DatePicker>
+                              <DatePicker fx:id="ngayKetThuc" layoutX="10.0" layoutY="100.0" prefHeight="40.0" prefWidth="300.0" promptText="Chọn ngày kết thúc">
+                                 <VBox.margin>
+                                    <Insets bottom="5.0" />
+                                 </VBox.margin>
+                              </DatePicker>
+                              <TextField fx:id="txtSDT" prefHeight="40.0" promptText="Nhập số điện thoại">
+                                 <VBox.margin>
+                                    <Insets bottom="5.0" />
+                                 </VBox.margin>
+                              </TextField>
+                              <TextField fx:id="txtCMND" layoutX="10.0" layoutY="189.0" prefHeight="40.0" promptText="Nhập số CMND">
+                                 <VBox.margin>
+                                    <Insets bottom="5.0" />
+                                 </VBox.margin>
+                              </TextField>
+                              <TextField fx:id="txtMaCV_user" layoutX="10.0" layoutY="274.0" prefHeight="40.0" promptText="Nhập mã chức vụ">
+                                 <VBox.margin>
+                                    <Insets bottom="5.0" />
+                                 </VBox.margin>
+                              </TextField>
+                              <TextField fx:id="txtLuong" layoutX="10.0" layoutY="279.0" prefHeight="40.0" promptText="Nhập tiền lương">
+                                 <VBox.margin>
+                                    <Insets bottom="5.0" />
+                                 </VBox.margin></TextField>
+                              <TextField fx:id="txtMaCN_user" layoutX="10.0" layoutY="279.0" prefHeight="40.0" promptText="Nhập mã chi nhánh">
+                                 <VBox.margin>
+                                    <Insets bottom="5.0" />
+                                 </VBox.margin>
+                              </TextField>
+                              <TextField fx:id="txtMaTK_user" layoutX="10.0" layoutY="364.0" prefHeight="40.0" promptText="Nhập mã tài khoản" />
+                           </children>
+                        </VBox>
+                        <Label layoutX="475.0" layoutY="14.0" prefHeight="40.0" prefWidth="350.0" text="Danh sách nhân viên">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </Label>
+                        <TextField fx:id="keyWordNV" layoutX="475.0" layoutY="54.0" prefHeight="26.0" prefWidth="550.0" promptText="Nhập tên nhân viên để tìm kiếm">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </TextField>
+                     </children>
+                  </AnchorPane>
+            </content>
+          </Tab>
+          <Tab fx:id="tabChiNhanh" closable="false" text="Chi nhánh">
+            <content>
+              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <Button layoutX="28.0" layoutY="444.0" mnemonicParsing="false" onAction="#addChiNhanh" prefHeight="50.0" prefWidth="127.0" text="Thêm chi nhánh">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </Button>
+                        <Button layoutX="172.0" layoutY="444.0" mnemonicParsing="false" onAction="#CapNhatChiNhanh" prefHeight="50.0" prefWidth="127.0" text="Sửa chi nhánh">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </Button>
+                        <Button layoutX="318.0" layoutY="444.0" mnemonicParsing="false" onAction="#xoaChiNhanhHandler" prefHeight="50.0" prefWidth="127.0" text="Xóa chi nhánh">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </Button>
+                        <TableView fx:id="tbChiNhanh" layoutX="475.0" layoutY="100.0" prefHeight="430.0" prefWidth="550.0" />
+                        <VBox layoutX="144.0" layoutY="14.0" prefHeight="135.0" prefWidth="300.0">
+                           <children>
+                              <TextField fx:id="txtMaCN" prefHeight="40.0" promptText="Nhập mã chi nhánh">
+                                 <VBox.margin>
+                                    <Insets bottom="5.0" />
+                                 </VBox.margin>
+                              </TextField>
+                              <TextField fx:id="txttenchinhanh" prefHeight="40.0" promptText="Nhập tên chi nhánh">
+                                 <VBox.margin>
+                                    <Insets bottom="5.0" />
+                                 </VBox.margin>
+                              </TextField>
+                              <TextField fx:id="txtdiachi" prefHeight="40.0" promptText="Nhập địa chỉ chi nhánh">
+                                 <VBox.margin>
+                                    <Insets bottom="5.0" />
+                                 </VBox.margin>
+                              </TextField>
+                           </children>
+                        </VBox>
+                        <VBox layoutX="14.0" layoutY="14.0" prefHeight="135.0" prefWidth="120.0">
+                           <children>
+                              <Label prefHeight="40.0" prefWidth="100.0" text="Mã chi nhánh">
+                                 <VBox.margin>
+                                    <Insets bottom="5.0" />
+                                 </VBox.margin>
+                                 <font>
+                                    <Font size="14.0" />
+                                 </font>
+                              </Label>
+                              <Label layoutX="10.0" layoutY="10.0" prefHeight="40.0" prefWidth="122.0" text="Tên chi nhánh">
+                                 <font>
+                                    <Font size="14.0" />
+                                 </font>
+                                 <VBox.margin>
+                                    <Insets bottom="5.0" />
+                                 </VBox.margin>
+                              </Label>
+                              <Label layoutX="10.0" layoutY="71.0" prefHeight="40.0" prefWidth="122.0" text="Địa chỉ chi nhánh">
+                                 <font>
+                                    <Font size="14.0" />
+                                 </font>
+                                 <VBox.margin>
+                                    <Insets bottom="5.0" />
+                                 </VBox.margin>
+                              </Label>
+                           </children>
+                        </VBox>
+                        <Label layoutX="473.0" layoutY="14.0" prefHeight="40.0" prefWidth="350.0" text="Danh sách chi nhánh">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </Label>
+                        <TextField fx:id="keyWordCN" layoutX="473.0" layoutY="54.0" prefHeight="26.0" prefWidth="550.0" promptText="Nhập tên chi nhánh để tìm kiếm">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </TextField>
+                     </children>
+                  </AnchorPane>
+            </content>
+          </Tab>
+            <Tab closable="false" text="Hàng hóa">
+               <content>
+                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <VBox layoutX="14.0" layoutY="14.0" prefHeight="270.0" prefWidth="120.0">
+                           <children>
+                              <Label prefHeight="40.0" prefWidth="100.0" text="Mã hàng hóa">
+                                 <VBox.margin>
+                                    <Insets bottom="5.0" />
+                                 </VBox.margin>
+                                 <font>
+                                    <Font size="14.0" />
+                                 </font>
+                              </Label>
+                              <Label layoutX="10.0" layoutY="10.0" prefHeight="40.0" prefWidth="100.0" text="Tên hàng hóa">
+                                 <font>
+                                    <Font size="14.0" />
+                                 </font>
+                                 <VBox.margin>
+                                    <Insets bottom="5.0" />
+                                 </VBox.margin>
+                              </Label>
+                              <Label layoutX="10.0" layoutY="71.0" prefHeight="40.0" prefWidth="100.0" text="Xuất xứ">
+                                 <font>
+                                    <Font size="14.0" />
+                                 </font>
+                                 <VBox.margin>
+                                    <Insets bottom="5.0" />
+                                 </VBox.margin>
+                              </Label>
+                              <Label layoutX="10.0" layoutY="132.0" prefHeight="40.0" prefWidth="100.0" text="Đơn giá">
+                                 <font>
+                                    <Font size="14.0" />
+                                 </font>
+                                 <VBox.margin>
+                                    <Insets bottom="5.0" />
+                                 </VBox.margin>
+                              </Label>
+                           </children>
+                        </VBox>
+                        <VBox layoutX="134.0" layoutY="14.0" prefHeight="270.0" prefWidth="300.0">
+                           <children>
+                              <TextField fx:id="txtMaHH" prefHeight="40.0" promptText="Nhập mã hàng hóa">
+                                 <VBox.margin>
+                                    <Insets bottom="5.0" />
+                                 </VBox.margin>
+                              </TextField>
+                              <TextField fx:id="txtTenHH" prefHeight="40.0" promptText="Nhập tên hàng hóa">
+                                 <VBox.margin>
+                                    <Insets bottom="5.0" />
+                                 </VBox.margin>
+                              </TextField>
+                              <TextField fx:id="txtXuatXu" prefHeight="40.0" promptText="Nhập nơi xuất xứ">
+                                 <VBox.margin>
+                                    <Insets bottom="5.0" />
+                                 </VBox.margin>
+                              </TextField>
+                              <TextField fx:id="txtDonGia" prefHeight="40.0" promptText="Nhập đơn giá (/kg)">
+                                 <VBox.margin>
+                                    <Insets bottom="5.0" />
+                                 </VBox.margin>
+                              </TextField>
+                           </children>
+                        </VBox>
+                        <Button layoutX="10.0" layoutY="349.0" mnemonicParsing="false" onAction="#addHangHoa" prefHeight="50.0" prefWidth="127.0" text="Thêm hàng hóa">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </Button>
+                        <Button layoutX="146.0" layoutY="349.0" mnemonicParsing="false" onAction="#CapNhatHangHoa" prefHeight="50.0" prefWidth="127.0" text="Sửa hàng hóa">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </Button>
+                        <Button layoutX="286.0" layoutY="349.0" mnemonicParsing="false" onAction="#xoaHangHoaHandler" prefHeight="50.0" prefWidth="127.0" text="Xóa hàng hóa">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </Button>
+                        <TableView fx:id="tbHangHoa" layoutX="475.0" layoutY="100.0" prefHeight="430.0" prefWidth="550.0" />
+                        <Label layoutX="475.0" layoutY="14.0" prefHeight="40.0" prefWidth="350.0" text="Danh sách hàng hóa">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </Label>
+                        <TextField fx:id="keyWordHH" layoutX="475.0" layoutY="54.0" prefHeight="26.0" prefWidth="550.0" promptText="Nhập tên hàng hóa để tìm kiếm">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </TextField>
+                     </children>
+                  </AnchorPane>
+               </content>
+            </Tab>
+            <Tab text="Quản lý hàng hóa">
+              <content>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <VBox layoutX="14.0" layoutY="14.0" prefHeight="270.0" prefWidth="120.0">
+                           <children>
+                              <Label prefHeight="40.0" prefWidth="100.0" text="Mã hàng hóa">
+                                 <VBox.margin>
+                                    <Insets bottom="5.0" />
+                                 </VBox.margin>
+                                 <font>
+                                    <Font size="14.0" />
+                                 </font>
+                              </Label>
+                              <Label layoutX="10.0" layoutY="10.0" prefHeight="40.0" prefWidth="100.0" text="Mã chi nhánh">
+                                 <font>
+                                    <Font size="14.0" />
+                                 </font>
+                                 <VBox.margin>
+                                    <Insets bottom="5.0" />
+                                 </VBox.margin>
+                              </Label>
+                              <Label layoutX="10.0" layoutY="71.0" prefHeight="40.0" prefWidth="100.0" text="Số lượng">
+                                 <font>
+                                    <Font size="14.0" />
+                                 </font>
+                                 <VBox.margin>
+                                    <Insets bottom="5.0" />
+                                 </VBox.margin>
+                              </Label>
+                           </children>
+                        </VBox>
+                        <VBox layoutX="134.0" layoutY="14.0" prefHeight="270.0" prefWidth="300.0">
+                           <children>
+                              <TextField prefHeight="40.0">
+                                 <VBox.margin>
+                                    <Insets bottom="5.0" />
+                                 </VBox.margin>
+                              </TextField>
+                              <TextField prefHeight="40.0">
+                                 <VBox.margin>
+                                    <Insets bottom="5.0" />
+                                 </VBox.margin>
+                              </TextField>
+                              <TextField prefHeight="40.0" promptText="Nhập số lượng">
+                                 <VBox.margin>
+                                    <Insets bottom="5.0" />
+                                 </VBox.margin>
+                              </TextField>
+                              <ButtonBar prefHeight="40.0" prefWidth="200.0" />
+                           </children>
+                        </VBox>
+                        <Button layoutX="14.0" layoutY="281.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="127.0" text="Thêm hàng hóa">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </Button>
+                        <Button layoutX="156.0" layoutY="281.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="127.0" text="Cập nhật">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </Button>
+                        <Button layoutX="299.0" layoutY="281.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="127.0" text="Xóa">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </Button>
+                        <Label layoutX="474.0" layoutY="14.0" prefHeight="40.0" prefWidth="350.0" text="Danh sách hàng hóa">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </Label>
+                        <TextField layoutX="471.0" layoutY="54.0" prefHeight="26.0" prefWidth="550.0" promptText="Nhập tên hàng hóa để tìm kiếm">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </TextField>
+                        <TableView layoutX="471.0" layoutY="106.0" prefHeight="430.0" prefWidth="550.0" />
+                     </children>
+                  </AnchorPane>
+              </content>
+            </Tab>
+            <Tab closable="false" text="Khuyến mãi">
+              <content>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <VBox layoutX="14.0" layoutY="14.0" prefHeight="270.0" prefWidth="120.0">
+                           <children>
+                              <Label prefHeight="40.0" prefWidth="100.0" text="Mã hàng hóa">
+                                 <VBox.margin>
+                                    <Insets bottom="5.0" />
+                                 </VBox.margin>
+                                 <font>
+                                    <Font size="14.0" />
+                                 </font>
+                              </Label>
+                              <Label layoutX="10.0" layoutY="10.0" prefHeight="40.0" prefWidth="100.0" text="Ngày bắt đầu">
+                                 <font>
+                                    <Font size="14.0" />
+                                 </font>
+                                 <VBox.margin>
+                                    <Insets bottom="5.0" />
+                                 </VBox.margin>
+                              </Label>
+                              <Label layoutX="10.0" layoutY="71.0" prefHeight="40.0" prefWidth="100.0" text="Ngày kết thúc">
+                                 <font>
+                                    <Font size="14.0" />
+                                 </font>
+                                 <VBox.margin>
+                                    <Insets bottom="5.0" />
+                                 </VBox.margin>
+                              </Label>
+                              <Label layoutX="10.0" layoutY="132.0" prefHeight="40.0" prefWidth="100.0" text="Giá khuyến mãi">
+                                 <font>
+                                    <Font size="14.0" />
+                                 </font>
+                                 <VBox.margin>
+                                    <Insets bottom="5.0" />
+                                 </VBox.margin>
+                              </Label>
+                           </children>
+                        </VBox>
+                        <VBox layoutX="134.0" layoutY="14.0" prefHeight="270.0" prefWidth="300.0">
+                           <children>
+                              <TextField fx:id="txtMaHHKhuyenMai" prefHeight="40.0" promptText="Nhập mã khuyến mãi">
+                                 <VBox.margin>
+                                    <Insets bottom="5.0" />
+                                 </VBox.margin>
+                              </TextField>
+                              <DatePicker fx:id="txtNgayBDKM" prefHeight="40.0" prefWidth="302.0" promptText="Chọn ngày bắt đầu khuyến mãi">
+                                 <VBox.margin>
+                                    <Insets bottom="5.0" />
+                                 </VBox.margin>
+                              </DatePicker>
+                              <DatePicker fx:id="txtNgayKTKM" layoutX="10.0" layoutY="55.0" prefHeight="40.0" prefWidth="302.0" promptText="Chọn ngày kết thúc khuyến mãi">
+                                 <VBox.margin>
+                                    <Insets bottom="5.0" />
+                                 </VBox.margin>
+                              </DatePicker>
+                              <TextField fx:id="txtGiaKM" layoutX="10.0" layoutY="10.0" prefHeight="40.0" promptText="Nhập giá khuyến mãi">
+                                 <font>
+                                    <Font size="14.0" />
+                                 </font>
+                              </TextField>
+                           </children>
+                        </VBox>
+                        <Button layoutX="10.0" layoutY="349.0" mnemonicParsing="false" onAction="#addKhuyenMai" prefHeight="50.0" prefWidth="145.0" text="Thêm khuyến mãi">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </Button>
+                        <Button layoutX="167.0" layoutY="349.0" mnemonicParsing="false" onAction="#CapNhatKhuyenMai" prefHeight="50.0" prefWidth="127.0" text="Sửa khuyến mãi">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </Button>
+                        <Button layoutX="306.0" layoutY="349.0" mnemonicParsing="false" onAction="#xoaKhuyenMaiHandler" prefHeight="50.0" prefWidth="127.0" text="Xóa khuyến mãi">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </Button>
+                        <TableView fx:id="tbKhuyenMai" layoutX="475.0" layoutY="100.0" prefHeight="430.0" prefWidth="550.0" />
+                        <Label layoutX="475.0" layoutY="14.0" prefHeight="40.0" prefWidth="350.0" text="Danh sách khuyến mãi">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </Label>
+                        <TextField fx:id="keyWordKM" layoutX="475.0" layoutY="54.0" prefHeight="26.0" prefWidth="550.0" promptText="Nhập tên hàng hóa để tìm kiếm">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </TextField>
+                     </children>
+                  </AnchorPane>
+              </content>
+            </Tab>
+            <Tab closable="false" text="Khách hàng">
+              <content>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <VBox layoutX="14.0" layoutY="14.0" prefHeight="225.0" prefWidth="120.0">
+                           <children>
+                              <Label prefHeight="40.0" prefWidth="100.0" text="Mã khách hàng">
+                                 <VBox.margin>
+                                    <Insets bottom="5.0" />
+                                 </VBox.margin>
+                                 <font>
+                                    <Font size="14.0" />
+                                 </font>
+                              </Label>
+                              <Label layoutX="10.0" layoutY="10.0" prefHeight="40.0" prefWidth="122.0" text="Họ tên khách hàng">
+                                 <font>
+                                    <Font size="14.0" />
+                                 </font>
+                                 <VBox.margin>
+                                    <Insets bottom="5.0" />
+                                 </VBox.margin>
+                              </Label>
+                              <Label layoutX="10.0" layoutY="71.0" prefHeight="40.0" prefWidth="100.0" text="Ngày sinh">
+                                 <font>
+                                    <Font size="14.0" />
+                                 </font>
+                                 <VBox.margin>
+                                    <Insets bottom="5.0" />
+                                 </VBox.margin>
+                              </Label>
+                              <Label layoutX="10.0" layoutY="132.0" prefHeight="40.0" prefWidth="100.0" text="Số điện thoại">
+                                 <font>
+                                    <Font size="14.0" />
+                                 </font>
+                                 <VBox.margin>
+                                    <Insets bottom="5.0" />
+                                 </VBox.margin>
+                              </Label>
+                              <Label layoutX="10.0" layoutY="192.0" prefHeight="40.0" prefWidth="120.0" text="CMND">
+                                 <font>
+                                    <Font size="14.0" />
+                                 </font>
+                                 <VBox.margin>
+                                    <Insets bottom="5.0" />
+                                 </VBox.margin>
+                              </Label>
+                           </children>
+                        </VBox>
+                        <VBox layoutX="161.0" layoutY="14.0" prefHeight="270.0" prefWidth="280.0">
+                           <children>
+                              <TextField prefHeight="40.0" promptText="Nhập mã khách hàng">
+                                 <VBox.margin>
+                                    <Insets bottom="5.0" />
+                                 </VBox.margin>
+                              </TextField>
+                              <TextField prefHeight="40.0" promptText="Nhập tên khách hàng">
+                                 <VBox.margin>
+                                    <Insets bottom="5.0" />
+                                 </VBox.margin>
+                              </TextField>
+                              <DatePicker prefHeight="40.0" prefWidth="281.0" promptText="Chọn ngày tham gia">
+                                 <VBox.margin>
+                                    <Insets bottom="5.0" />
+                                 </VBox.margin>
+                              </DatePicker>
+                              <TextField prefHeight="40.0" promptText="Nhập số điện thoại">
+                                 <VBox.margin>
+                                    <Insets bottom="5.0" />
+                                 </VBox.margin>
+                              </TextField>
+                              <TextField prefHeight="40.0" promptText="Nhập số CMND">
+                                 <VBox.margin>
+                                    <Insets bottom="5.0" />
+                                 </VBox.margin>
+                              </TextField>
+                           </children>
+                        </VBox>
+                        <Button layoutX="10.0" layoutY="388.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="130.0" text="Thêm khách hàng">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </Button>
+                        <Button layoutX="161.0" layoutY="388.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="130.0" text="Sửa khách hàng">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </Button>
+                        <Button layoutX="310.0" layoutY="388.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="130.0" text="Xóa khách hàng">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </Button>
+                        <TableView layoutX="475.0" layoutY="100.0" prefHeight="430.0" prefWidth="550.0" />
+                        <Label layoutX="475.0" layoutY="14.0" prefHeight="40.0" prefWidth="350.0" text="Danh sách khách hàng">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </Label>
+                        <TextField layoutX="475.0" layoutY="54.0" prefHeight="26.0" prefWidth="550.0" promptText="Nhập tên khách hàng để tìm kiếm">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </TextField>
+                     </children>
+                  </AnchorPane>
+              </content>
+            </Tab>
+            <Tab closable="false" text="Thanh toán hóa đơn (tại quầy)">
+              <content>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <VBox layoutX="14.0" layoutY="14.0" prefHeight="185.0" prefWidth="120.0">
+                           <children>
+                              <Label layoutX="10.0" layoutY="10.0" prefHeight="40.0" prefWidth="100.0" text="Mã hóa đơn">
+                                 <font>
+                                    <Font size="14.0" />
+                                 </font>
+                              </Label>
+                              <Label prefHeight="40.0" prefWidth="100.0" text="Mã hàng hóa">
+                                 <VBox.margin>
+                                    <Insets bottom="5.0" />
+                                 </VBox.margin>
+                                 <font>
+                                    <Font size="14.0" />
+                                 </font>
+                              </Label>
+                              <Label layoutX="10.0" layoutY="71.0" prefHeight="40.0" prefWidth="100.0" text="Số lượng">
+                                 <font>
+                                    <Font size="14.0" />
+                                 </font>
+                                 <VBox.margin>
+                                    <Insets bottom="5.0" />
+                                 </VBox.margin>
+                              </Label>
+                              <Label prefHeight="40.0" prefWidth="100.0" text="Tổng tiền">
+                                 <VBox.margin>
+                                    <Insets bottom="5.0" />
+                                 </VBox.margin>
+                                 <font>
+                                    <Font size="14.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </VBox>
+                        <VBox layoutX="134.0" layoutY="14.0" prefHeight="183.0" prefWidth="280.0">
+                           <children>
+                              <TextField fx:id="txtMaHD" disable="true" layoutX="10.0" layoutY="10.0" prefHeight="40.0">
+                                 <VBox.margin>
+                                    <Insets bottom="5.0" />
+                                 </VBox.margin>
+                              </TextField>
+                              <TextField fx:id="txtMaHH_HD" disable="true" prefHeight="40.0" promptText="Nhập mã hàng hóa">
+                                 <VBox.margin>
+                                    <Insets bottom="5.0" />
+                                 </VBox.margin>
+                              </TextField>
+                              <TextField fx:id="txtSoLuongHH_HD" disable="true" prefHeight="40.0" promptText="Nhập số lượng (kg)">
+                                 <VBox.margin>
+                                    <Insets bottom="5.0" />
+                                 </VBox.margin>
+                              </TextField>
+                              <TextField fx:id="txtTongTien_HD" disable="true" prefHeight="40.0">
+                                 <VBox.margin>
+                                    <Insets bottom="5.0" />
+                                 </VBox.margin>
+                              </TextField>
+                           </children>
+                        </VBox>
+                        <VBox layoutX="452.0" layoutY="14.0" prefHeight="185.0" prefWidth="120.0">
+                           <children>
+                              <Label layoutX="10.0" layoutY="10.0" prefHeight="40.0" prefWidth="100.0" text="Tiền khách đưa">
+                                 <font>
+                                    <Font size="14.0" />
+                                 </font>
+                                 <VBox.margin>
+                                    <Insets bottom="5.0" />
+                                 </VBox.margin>
+                              </Label>
+                              <Label layoutX="10.0" layoutY="132.0" prefHeight="40.0" prefWidth="100.0" text="Mã khách hàng">
+                                 <font>
+                                    <Font size="14.0" />
+                                 </font>
+                                 <VBox.margin>
+                                    <Insets bottom="5.0" />
+                                 </VBox.margin>
+                              </Label>
+                              <Label layoutX="10.0" layoutY="100.0" prefHeight="40.0" prefWidth="100.0" text="Mã chi nhánh">
+                                 <font>
+                                    <Font size="14.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </VBox>
+                        <TableView fx:id="tbChiTietHoaDon" layoutX="20.0" layoutY="254.0" prefHeight="266.0" prefWidth="1000.0" />
+                        <VBox layoutX="548.0" layoutY="14.0" prefHeight="183.0" prefWidth="280.0">
+                           <children>
+                              <TextField fx:id="txtTienNhan_HD" disable="true" prefHeight="40.0" promptText="Nhập tiền khách đưa">
+                                 <VBox.margin>
+                                    <Insets bottom="5.0" />
+                                 </VBox.margin>
+                              </TextField>
+                              <TextField fx:id="txtMaKH_HD" disable="true" prefHeight="40.0" promptText="Nhập mã khách hàng">
+                                 <VBox.margin>
+                                    <Insets bottom="5.0" />
+                                 </VBox.margin>
+                              </TextField>
+                              <TextField fx:id="txtMaCN_HD" disable="true" layoutX="10.0" layoutY="100.0" prefHeight="40.0" promptText="Nhập mã chi nhánh" />
+                           </children>
+                        </VBox>
+                        <VBox layoutX="845.0" layoutY="14.0" prefHeight="230.0" prefWidth="135.0">
+                           <children>
+                              <Button fx:id="btnTaoHD" mnemonicParsing="false" onAction="#TaoHoaDon" prefHeight="40.0" prefWidth="135.0" text="Tạo hóa đơn">
+                                 <VBox.margin>
+                                    <Insets bottom="5.0" />
+                                 </VBox.margin>
+                              </Button>
+                              <Button fx:id="btnThemHH_HD" disable="true" mnemonicParsing="false" onAction="#TaoChiTietHoaDon" prefHeight="40.0" prefWidth="135.0" text="Thêm sản phẩm">
+                                 <VBox.margin>
+                                    <Insets bottom="5.0" />
+                                 </VBox.margin>
+                              </Button>
+                              <Button fx:id="btnCapNhatHH_HD" disable="true" mnemonicParsing="false" onAction="#CapNhatCTHD" prefHeight="40.0" prefWidth="135.0" text="Cập nhật sản phẩm">
+                                 <VBox.margin>
+                                    <Insets bottom="5.0" />
+                                 </VBox.margin>
+                              </Button>
+                              <Button fx:id="btnXoaHH_HD" disable="true" mnemonicParsing="false" onAction="#xoaCTHDHandler" prefHeight="40.0" prefWidth="135.0" text="Xóa sản phẩm">
+                                 <VBox.margin>
+                                    <Insets bottom="5.0" />
+                                 </VBox.margin>
+                              </Button>
+                              <Button fx:id="btnLuuHD" disable="true" mnemonicParsing="false" onAction="#LuuHoaDon" prefHeight="40.0" prefWidth="135.0" text="Lưu hóa đơn" />
+                           </children>
+                        </VBox>
+                     </children>
+                  </AnchorPane>
+              </content>
+            </Tab>
+            <Tab closable="false" text="Thông tin hóa đơn">
+               <content>
+                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <VBox layoutX="14.0" layoutY="14.0" prefHeight="270.0" prefWidth="142.0">
+                           <children>
+                              <Label prefHeight="40.0" prefWidth="100.0" text="Mã hóa đơn">
+                                 <VBox.margin>
+                                    <Insets bottom="5.0" />
+                                 </VBox.margin>
+                                 <font>
+                                    <Font size="14.0" />
+                                 </font>
+                              </Label>
+                              <Label layoutX="10.0" layoutY="10.0" prefHeight="40.0" prefWidth="111.0" text="Ngày in hóa đơn">
+                                 <font>
+                                    <Font size="14.0" />
+                                 </font>
+                                 <VBox.margin>
+                                    <Insets bottom="5.0" />
+                                 </VBox.margin>
+                              </Label>
+                              <Label layoutX="10.0" layoutY="71.0" prefHeight="40.0" prefWidth="137.0" text="Nhân viên thanh toán">
+                                 <font>
+                                    <Font size="14.0" />
+                                 </font>
+                                 <VBox.margin>
+                                    <Insets bottom="5.0" />
+                                 </VBox.margin>
+                              </Label>
+                              <Label layoutX="10.0" layoutY="132.0" prefHeight="40.0" prefWidth="100.0" text="Khách hàng">
+                                 <font>
+                                    <Font size="14.0" />
+                                 </font>
+                                 <VBox.margin>
+                                    <Insets bottom="5.0" />
+                                 </VBox.margin>
+                              </Label>
+                              <Label layoutX="10.0" layoutY="144.0" prefHeight="40.0" prefWidth="100.0" text="Tổng tiền">
+                                 <font>
+                                    <Font size="14.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </VBox>
+                        <VBox layoutX="156.0" layoutY="14.0" prefHeight="237.0" prefWidth="280.0">
+                           <children>
+                              <TextField disable="true" prefHeight="40.0">
+                                 <VBox.margin>
+                                    <Insets bottom="5.0" />
+                                 </VBox.margin>
+                              </TextField>
+                              <TextField disable="true" prefHeight="40.0">
+                                 <VBox.margin>
+                                    <Insets bottom="5.0" />
+                                 </VBox.margin>
+                              </TextField>
+                              <TextField disable="true" prefHeight="40.0">
+                                 <VBox.margin>
+                                    <Insets bottom="5.0" />
+                                 </VBox.margin>
+                              </TextField>
+                              <TextField disable="true" layoutX="10.0" layoutY="10.0" prefHeight="40.0">
+                                 <VBox.margin>
+                                    <Insets bottom="5.0" />
+                                 </VBox.margin>
+                              </TextField>
+                              <TextField disable="true" layoutX="10.0" layoutY="144.0" prefHeight="44.0" prefWidth="280.0" />
+                           </children>
+                        </VBox>
+                        <Button layoutX="20.0" layoutY="314.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="130.0" text="Chỉnh hóa đơn">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </Button>
+                        <Button layoutX="224.0" layoutY="314.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="130.0" text="Xóa hóa đơn">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </Button>
+                        <Label layoutX="462.0" layoutY="14.0" prefHeight="40.0" prefWidth="350.0" text="Danh sách hóa đơn">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </Label>
+                        <TextField layoutX="462.0" layoutY="54.0" prefHeight="26.0" prefWidth="550.0" promptText="Nhập mã hóa đơn để tìm kiếm">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </TextField>
+                        <TableView layoutX="475.0" layoutY="100.0" prefHeight="430.0" prefWidth="550.0" />
+                     </children>
+                  </AnchorPane>
+               </content>
+            </Tab>
+        </tabs>
+      </TabPane>
+      <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="20.0" prefWidth="1036.0" text="© 2022 OUMarket HCMC, Inc. All right reserved." textAlignment="CENTER" textFill="#8c6400">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </Label>
+   </children>
+</VBox>
