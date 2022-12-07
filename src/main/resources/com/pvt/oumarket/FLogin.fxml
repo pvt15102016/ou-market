@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="450.0" maxWidth="700.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="450.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.pvt.oumarket.FLoginController">
+   <children>
+      <Label alignment="CENTER" contentDisplay="CENTER" layoutY="14.0" prefHeight="60.0" prefWidth="700.0" text="ĐĂNG NHẬP" textAlignment="CENTER" textFill="#002fff">
+         <font>
+            <Font size="40.0" />
+         </font>
+      </Label>
+      <VBox layoutX="14.0" layoutY="123.0" prefHeight="180.0" prefWidth="186.0">
+         <children>
+            <Label contentDisplay="CENTER" prefHeight="50.0" prefWidth="200.0" text="Tên người dùng:">
+               <font>
+                  <Font size="24.0" />
+               </font>
+               <VBox.margin>
+                  <Insets bottom="5.0" top="5.0" />
+               </VBox.margin>
+            </Label>
+            <Label prefHeight="50.0" prefWidth="200.0" text="Mật khẩu:">
+               <font>
+                  <Font size="24.0" />
+               </font>
+               <VBox.margin>
+                  <Insets bottom="5.0" top="5.0" />
+               </VBox.margin>
+            </Label>
+            <Label prefHeight="50.0" prefWidth="200.0" text="Chức vụ:">
+               <font>
+                  <Font size="24.0" />
+               </font>
+               <VBox.margin>
+                  <Insets bottom="5.0" top="5.0" />
+               </VBox.margin>
+            </Label>
+         </children>
+      </VBox>
+      <VBox layoutX="200.0" layoutY="123.0" prefHeight="180.0" prefWidth="350.0">
+         <children>
+            <TextField fx:id="txtUsername" prefHeight="50.0" promptText="Nhập mã tài khoản (không chứa khoảng trắng)">
+               <VBox.margin>
+                  <Insets bottom="5.0" top="5.0" />
+               </VBox.margin>
+               <cursor>
+                  <Cursor fx:constant="TEXT" />
+               </cursor>
+            </TextField>
+            <PasswordField fx:id="txtPassword" prefHeight="50.0" prefWidth="150.0" promptText="Nhập mật khẩu">
+               <VBox.margin>
+                  <Insets bottom="5.0" top="5.0" />
+               </VBox.margin>
+               <cursor>
+                  <Cursor fx:constant="TEXT" />
+               </cursor>
+            </PasswordField>
+            <ComboBox fx:id="cbChucVu" prefHeight="50.0" prefWidth="150.0">
+               <VBox.margin>
+                  <Insets bottom="5.0" top="5.0" />
+               </VBox.margin>
+               <cursor>
+                  <Cursor fx:constant="DEFAULT" />
+               </cursor>
+            </ComboBox>
+         </children>
+      </VBox>
+      <HBox layoutX="44.0" layoutY="341.0" prefHeight="50.0" prefWidth="600.0">
+         <children>
+            <Button fx:id="btnDangNhap" mnemonicParsing="false" onAction="#btnDangNhap" prefHeight="50.0" prefWidth="150.0" text="ĐĂNG NHẬP" textFill="RED">
+               <HBox.margin>
+                  <Insets left="25.0" right="25.0" />
+               </HBox.margin>
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Button>
+            <Button layoutX="15.0" layoutY="10.0" mnemonicParsing="false" onAction="#showInfo" prefHeight="50.0" prefWidth="150.0" text="THÔNG TIN" textFill="RED">
+               <HBox.margin>
+                  <Insets left="225.0" right="25.0" />
+               </HBox.margin>
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Button>
+         </children>
+      </HBox>
+      <Label alignment="CENTER" contentDisplay="CENTER" layoutY="430.0" prefHeight="20.0" prefWidth="700.0" text="© 2022 OUMarket HCMC, Inc. All right reserved." textAlignment="CENTER" textFill="#8c6400">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </Label>
+   </children>
+</AnchorPane>

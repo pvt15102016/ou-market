@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Rectangle2D?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1280.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.pvt.oumarket.FMainPageController">
+   <children>
+      <HBox layoutX="174.0" prefHeight="60.0" prefWidth="1106.0" style="-fx-background-image: url(&quot;OUMarket.png&quot;);" stylesheets="@../styles/style.css">
+         <children>
+            <Label alignment="CENTER_RIGHT" contentDisplay="CENTER" prefHeight="60.0" prefWidth="985.0" style="-fx-background-color: #87c1ff;" text="WELCOME, AAA BBB" textFill="#201616">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+            <Button alignment="CENTER" contentDisplay="RIGHT" mnemonicParsing="false" prefHeight="60.0" prefWidth="120.0" text="ĐĂNG XUẤT" textAlignment="CENTER">
+               <font>
+                  <Font name="System Bold Italic" size="14.0" />
+               </font>
+            </Button>
+         </children>
+      </HBox>
+      <VBox layoutY="-27.0" prefHeight="720.0" prefWidth="175.0" style="-fx-background-color: #4d4dff;">
+         <children>
+            <Label prefHeight="150.0" prefWidth="150.0" styleClass="logo">
+               <graphic>
+                  <ImageView fitHeight="100.0" fitWidth="175.0" pickOnBounds="true">
+                     <image>
+                        <Image url="@../../../com.pvt.pictures/OUMarket.png" />
+                     </image>
+                     <viewport>
+                        <Rectangle2D />
+                     </viewport>
+                  </ImageView>
+               </graphic>
+            </Label>
+            <Button fx:id="btnNhanVien" mnemonicParsing="false" prefHeight="100.0" prefWidth="175.0" style="-fx-background-color: #4d4dff;" text="Quản lý nhân viên" textFill="WHITE">
+               <font>
+                  <Font name="Arial" size="15.0" />
+               </font>
+            </Button>
+            <Button fx:id="btnChiNhanh" layoutX="10.0" layoutY="10.0" mnemonicParsing="false" prefHeight="100.0" prefWidth="175.0" style="-fx-background-color: #4d4dff;" text="Quản lý chi nhánh" textFill="WHITE">
+               <font>
+                  <Font name="Arial" size="15.0" />
+               </font>
+            </Button>
+            <Button fx:id="btnHangHoa" layoutX="10.0" layoutY="110.0" mnemonicParsing="false" prefHeight="100.0" prefWidth="175.0" style="-fx-background-color: #4d4dff;" text="Quản lý hàng hóa" textFill="WHITE">
+               <font>
+                  <Font name="Arial" size="15.0" />
+               </font>
+            </Button>
+            <Button fx:id="btnThanhToan" layoutX="10.0" layoutY="210.0" mnemonicParsing="false" prefHeight="100.0" prefWidth="175.0" style="-fx-background-color: #4d4dff;" text="Thanh toán tại quầy" textFill="WHITE">
+               <font>
+                  <Font name="Arial" size="15.0" />
+               </font>
+            </Button>
+            <Button fx:id="btnKhachHang" layoutX="10.0" layoutY="310.0" mnemonicParsing="false" prefHeight="100.0" prefWidth="175.0" style="-fx-background-color: #4d4dff;" text="Quản lý khách hàng" textFill="WHITE">
+               <font>
+                  <Font name="Arial" size="15.0" />
+               </font>
+            </Button>
+         </children>
+      </VBox>
+      <Label alignment="CENTER" contentDisplay="CENTER" layoutY="690.0" maxHeight="1.7976931348623157E308" prefHeight="30.0" prefWidth="1280.0" style="-fx-background-color: #ccccff;" text="© 2022 OUMarket HCMC, Inc. All right reserved." textAlignment="CENTER" textFill="#8c6400">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </Label>
+      <AnchorPane layoutX="175.0" layoutY="60.0" prefHeight="635.0" prefWidth="1106.0">
+         <children>
+            <Pane fx:id="paneNhanVien" prefHeight="630.0" prefWidth="1105.0" style="-fx-background-color: #99ff99;" />
+            <Pane fx:id="paneChiNhanh" prefHeight="630.0" prefWidth="1105.0" style="-fx-background-color: #66ffff;" />
+            <Pane fx:id="paneHangHoa" prefHeight="630.0" prefWidth="1105.0" style="-fx-background-color: #9999ff;" />
+            <Pane fx:id="paneThanhToan" prefHeight="630.0" prefWidth="1105.0" style="-fx-background-color: #ff9999;" />
+            <Pane fx:id="paneKhachHang" prefHeight="630.0" prefWidth="1105.0" style="-fx-background-color: #ffbf80;" />
+         </children>
+      </AnchorPane>
+   </children>
+</AnchorPane>
