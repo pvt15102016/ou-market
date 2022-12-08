@@ -156,4 +156,8 @@ public class HoaDonServices {
              Utils.showBox("Lỗi không xóa được hóa đơn", Alert.AlertType.ERROR).show();
             }
     }
+
+    public void upDateHH_DH(String feda63ff59d84130ba81912f10928345, String string) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
 }
