@@ -28,6 +28,7 @@ public class UserServicesTest {
     private static UserServices user;
     private static Connection conn;
     
+    @BeforeAll
     public static void beforeAll() {
         try {
             conn = JDBCUtils.getConn();
@@ -46,4 +47,16 @@ public class UserServicesTest {
         }
     }
    
+    @Test
+    public void testGetListUser() throws SQLException{
+    
+        List <User> us= user.getListUser();
+        
+        for (User h: us){
+            System.out.println(h.getId());
+            System.out.println(h.getUsername());
+            System.out.println(h.getPassword());
+            System.out.println(h.getMaUserrole());
+        }                               
+    }        
 }

@@ -27,6 +27,7 @@ public class ChiTietHoaDonServicesTest {
     private static ChiTietHoaDonServices hoadon;
     private static Connection conn;
     
+    @BeforeAll
     public static void beforeAll() {
         try {
             conn = JDBCUtils.getConn();

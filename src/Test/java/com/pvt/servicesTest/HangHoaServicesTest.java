@@ -48,23 +48,44 @@ public class HangHoaServicesTest {
         }
     }
     
-    @Test
-    public void testSuccessThemHangHoa() throws Exception{
-        HangHoa hh = new HangHoa(99, "String", "Ho Chi Minh", 50000);
-        hhsv.ThemHangHoa(hh);
-        
-        Assertions.assertEquals(1, hhsv.getListHangHoa().get(0).getId());
-    }
+//    @Test
+//    public void testSuccessThemHangHoa() throws Exception{
+//        HangHoa hh = new HangHoa(99, "String", "Ho Chi Minh", 50000);
+//        hhsv.ThemHangHoa(hh);
+//        
+//        Assertions.assertEquals(1, hhsv.getListHangHoa().get(0).getId());
+//    }
+//    
+//    @Test
+//    public void testSuccessTimHangHoa() throws Exception{
+//        String kw = "Sting";
+//        List<HangHoa> hanghoa = hhsv.TimHangHoa(kw);
+//        for(HangHoa h:hanghoa){
+//            Assertions.assertTrue(h.getTenHangHoa().toLowerCase().contains(kw.toLowerCase()));
+//        }
+//    }
+//    
+//    @Test
+//    public void testSuccessXoaHangHoa() throws Exception{
+//        HangHoa hh = new HangHoa(40, "Sting", "Ho Chi Minh", 50000);
+//        hhsv.xoaHangHoa(hh);
+//        
+//        Assertions.assertEquals(1, hhsv.getListHangHoa().get(0).getId());
+//    }
     
-    @Test
-    public void testSuccessTimHangHoa() throws Exception{
-        String kw = "Sting";
-        List<HangHoa> hanghoa = hhsv.TimHangHoa(kw);
-        for(HangHoa h:hanghoa){
-            Assertions.assertTrue(h.getTenHangHoa().toLowerCase().contains(kw.toLowerCase()));
+   @Test
+    public void testGetListHangHoa() throws SQLException {
+        List<HangHoa> hangHoa = hhsv.getListHangHoa();
+        
+        for (HangHoa h:hangHoa){
+            System.out.println(h.getId());
+            System.out.println(h.getTenHangHoa());
+            System.out.println(h.getXuatXu());
+            System.out.println(h.getDonGia());
         }
     }
     
+<<<<<<< HEAD
     @Test
     public void testSuccessXoaHangHoa() throws Exception{
         HangHoa hh = new HangHoa(40, "Sting", "Ho Chi Minh", 50000);
@@ -73,5 +94,7 @@ public class HangHoaServicesTest {
         Assertions.assertEquals(1, hhsv.getListHangHoa().get(0).getId());
     }
     
+=======
+>>>>>>> fc81145d3c014b2a41a7d78cd6fa171e540f1e46
     
 }
