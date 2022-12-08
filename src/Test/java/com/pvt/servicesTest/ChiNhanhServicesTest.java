@@ -51,7 +51,7 @@ public class ChiNhanhServicesTest {
     @Test
     public void testSuccessThemChiNhanh() throws SQLException {
 
-        ChiNhanh cn = new ChiNhanh(10, "Chi Nhánh 1", "97 Vo Van Tan");
+        ChiNhanh cn = new ChiNhanh(100, "Chi Nhánh 1", "97 Vo Van Tan");
         chiNhanhSV.ThemChiNhanh(cn);
 
         String sql = "SELECT * FROM chinhanh WHERE tenchinhanh = N?";
@@ -62,7 +62,7 @@ public class ChiNhanhServicesTest {
         ResultSet rs = stm.executeQuery();
         boolean kt = false;
         while (rs.next()) {
-            if (rs.getInt("id") == 10) {
+            if (rs.getInt("id") == 100) {
                 kt = true;
                 break;
             }
@@ -85,5 +85,15 @@ public class ChiNhanhServicesTest {
         }
     }
     
+    @Test
+    public void testGetListChiNhanh() throws SQLException {
+        List<ChiNhanh> cn = chiNhanhSV.getChiNhanh();
+        
+        for (ChiNhanh c:cn){
+            System.out.println(c.getId());
+            System.out.println(c.getDiaChi());
+            System.out.println(c.getTenChiNhanh());
+        }
+    }
     
 }
