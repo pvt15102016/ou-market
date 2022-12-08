@@ -27,6 +27,7 @@ public class KhuyenMaiServicesTest {
     private static KhuyenMaiServices khuyenmai;
     private static Connection conn;
     
+    @BeforeAll
     public static void beforeAll() {
         try {
             conn = JDBCUtils.getConn();
@@ -42,6 +43,19 @@ public class KhuyenMaiServicesTest {
             conn.close();
         } catch (SQLException ex) {
             Logger.getLogger(KhuyenMaiServicesTest.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    @Test
+    public void testGetListKhuyenMai() throws SQLException {
+        String kw = "2";
+        List<KhuyenMai> km = khuyenmai.getListKhuyenMai(kw);
+        
+        for (KhuyenMai h: km){
+            System.out.println(h.getId());
+            System.out.println(h.getNgayBatDau());
+            System.out.println(h.getNgayKetThuc());
+            System.out.println(h.getGiaKhuyenMai());
+ 
         }
     }
     

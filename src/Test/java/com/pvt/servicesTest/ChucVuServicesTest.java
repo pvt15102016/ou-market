@@ -29,6 +29,7 @@ public class ChucVuServicesTest {
     private static ChucVuServices chucvu;
     private static Connection conn;
     
+    @BeforeAll
     public static void beforeAll() {
         try {
             conn = JDBCUtils.getConn();
@@ -44,6 +45,16 @@ public class ChucVuServicesTest {
             conn.close();
         } catch (SQLException ex) {
             Logger.getLogger(ChucVuServicesTest.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    
+    @Test
+    public void testGetListChucVu() throws SQLException {
+        List<ChucVu> cv = chucvu.getListChucVu();
+        
+        for (ChucVu h: cv){
+            System.out.println(h.getId());
+            System.out.println(h.getTenChucVu());
         }
     }
     

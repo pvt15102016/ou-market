@@ -41,7 +41,7 @@ public class ChucVuServices {
                      }
                 }
                 return results;
-   }
+}
     public ChucVu getChucVu(String tenChucVu) throws SQLException{
         ChucVu cv = new ChucVu();
         try(Connection conn = JDBCUtils.getConn()){

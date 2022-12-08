@@ -28,6 +28,7 @@ public class KhachHangServicesTest {
     private static KhachHangServices khachhang;
     private static Connection conn;
     
+    @BeforeAll
     public static void beforeAll() {
         try {
             conn = JDBCUtils.getConn();
@@ -46,5 +47,19 @@ public class KhachHangServicesTest {
         }
     }
   
+    @Test
+    public void testGetListKhachHang() throws SQLException {
+        String kw = "Ly";
+        List<KhachHang> kh = khachhang.getListKhachHang(kw);
+        
+        for (KhachHang h: kh){
+            System.out.println(h.getId());
+            System.out.println(h.getTenKH());
+            System.out.println(h.getNgayThamGia());
+            System.out.println(h.getSDT());
+            System.out.println(h.getCmnd());
+            System.out.println(h.getNgaySinh());
+        }
+    }
     
 }
