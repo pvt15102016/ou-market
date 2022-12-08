@@ -85,5 +85,16 @@ public class HangHoaServicesTest {
         }
     }
     
+<<<<<<< HEAD
+    @Test
+    public void testSuccessXoaHangHoa() throws Exception{
+        HangHoa hh = new HangHoa(40, "Sting", "Ho Chi Minh", 50000);
+        hhsv.xoaHangHoa(hh);
+        
+        Assertions.assertEquals(1, hhsv.getListHangHoa().get(0).getId());
+    }
+    
+=======
+>>>>>>> fc81145d3c014b2a41a7d78cd6fa171e540f1e46
     
 }
