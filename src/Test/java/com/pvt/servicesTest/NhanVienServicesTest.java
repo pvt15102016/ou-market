@@ -4,6 +4,7 @@
  */
 package com.pvt.servicesTest;
 
+<<<<<<< HEAD
 
 /**
  *
@@ -12,6 +13,8 @@ package com.pvt.servicesTest;
 
 
 
+=======
+>>>>>>> 14c4df979875d0cfa533f6b985d32e85f8d2ac01
 import com.pvt.pojo.NhanVien;
 import com.pvt.services.NhanVienServices;
 import com.pvt.utils.JDBCUtils;
@@ -29,37 +32,55 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> 14c4df979875d0cfa533f6b985d32e85f8d2ac01
 /**
  *
  * @author mello
  */
+<<<<<<< HEAD
 
     
 public class NhanVienServicesTest {
         
     private static Connection conn;
+=======
+public class NhanVienServicesTest {
+>>>>>>> 14c4df979875d0cfa533f6b985d32e85f8d2ac01
     private static NhanVienServices nvsv;
+    private static Connection conn;
     
     @BeforeAll
+<<<<<<< HEAD
 
+=======
+>>>>>>> 14c4df979875d0cfa533f6b985d32e85f8d2ac01
     public static void beforeAll() {
         try {
             conn = JDBCUtils.getConn();
         } catch (SQLException ex) {
-            Logger.getLogger(ChiNhanhServicesTest.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(NhanVienServices.class.getName()).log(Level.SEVERE, null, ex);
         }
         nvsv = new NhanVienServices();
+<<<<<<< HEAD
 
+=======
+>>>>>>> 14c4df979875d0cfa533f6b985d32e85f8d2ac01
     }
-    
+
     @AfterAll
     public static void afterAll() {
         try {
             conn.close();
         } catch (SQLException ex) {
+<<<<<<< HEAD
 
             Logger.getLogger(NhanVienServicesTest.class.getName()).log(Level.SEVERE, null, ex);
+=======
+            Logger.getLogger(NhanVienServices.class.getName()).log(Level.SEVERE, null, ex);
+>>>>>>> 14c4df979875d0cfa533f6b985d32e85f8d2ac01
         }
     }
     
@@ -78,7 +99,10 @@ public class NhanVienServicesTest {
             System.out.println(n.getMaChucVu());
             System.out.println(n.getMaChiNhanh());
             System.out.println(n.getTienLuong());
+<<<<<<< HEAD
 
+=======
+>>>>>>> 14c4df979875d0cfa533f6b985d32e85f8d2ac01
         }
     }
     
