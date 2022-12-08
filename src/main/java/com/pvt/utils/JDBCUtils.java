@@ -20,6 +20,6 @@ public class JDBCUtils {
     }
     
     public static Connection getConn() throws SQLException {
-        return DriverManager.getConnection("jdbc:mysql://localhost/oumarket", "root", "12345678");
+        return DriverManager.getConnection("jdbc:mysql://localhost/oumarket", "root", "21112001aA%");
     }
 }

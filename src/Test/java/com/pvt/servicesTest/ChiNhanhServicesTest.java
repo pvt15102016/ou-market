@@ -51,7 +51,7 @@ public class ChiNhanhServicesTest {
     @Test
     public void testSuccessThemChiNhanh() throws SQLException {
 
-        ChiNhanh cn = new ChiNhanh(23, "Chi Nhánh 1", "97 Vo Van Tan");
+        ChiNhanh cn = new ChiNhanh(10, "Chi Nhánh 1", "97 Vo Van Tan");
         chiNhanhSV.ThemChiNhanh(cn);
 
         String sql = "SELECT * FROM chinhanh WHERE tenchinhanh = N?";
@@ -62,7 +62,7 @@ public class ChiNhanhServicesTest {
         ResultSet rs = stm.executeQuery();
         boolean kt = false;
         while (rs.next()) {
-            if (rs.getInt("id") == 23) {
+            if (rs.getInt("id") == 10) {
                 kt = true;
                 break;
             }
