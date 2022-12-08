@@ -74,7 +74,7 @@ public class FLoginController implements Initializable {
     }
     public void showInfo(ActionEvent event)throws Exception{
         Utils.showBox("OUMarket Project\n PhanVanTien\n TuanTiep\n Thach\n ThachThiMyDung\n "
-                + "End date: 25/04/2022", Alert.AlertType.INFORMATION).show();
+                + "End date: 09/12/2022", Alert.AlertType.INFORMATION).show();
     }
     
     public void btnDangNhap (ActionEvent event)throws SQLException,  IOException{

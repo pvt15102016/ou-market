@@ -44,9 +44,9 @@ public class ChiNhanhServices {
             stm.executeUpdate();
             conn.commit();
         }
-        catch (SQLException ex){
-            Utils.showBox("Lỗi không thêm được chi nhánh", Alert.AlertType.ERROR).show();
-        }
+//        catch (SQLException ex){
+//            Utils.showBox("Lỗi không thêm được chi nhánh", Alert.AlertType.ERROR).show();
+//        }
     }
 
     public void addChiNhanh (ChiNhanh cn) throws SQLException{
