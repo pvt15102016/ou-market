@@ -29,6 +29,7 @@ public class QuanLyHangServicesTest {
     private static QuanLyHangServices quanly;
     private static Connection conn;
     
+    @BeforeAll
     public static void beforeAll() {
         try {
             conn = JDBCUtils.getConn();

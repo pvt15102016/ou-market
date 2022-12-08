@@ -5,6 +5,7 @@
 package com.pvt.servicesTest;
 
 import com.pvt.services.HoaDonServices;
+import com.pvt.pojo.HoaDon;
 import java.lang.annotation.Target;
 import com.pvt.utils.JDBCUtils;
 import java.sql.Connection;
@@ -67,7 +68,19 @@ public class HoaDonServicesTest {
 //
 //        }
 //    }
+    @Test
+    public void testGetListHoaDon() throws SQLException{
     
-    
-    
+        List <HoaDon> hoaDon= hd.getListHoaDon();
+        
+        for (HoaDon h: hoaDon){
+            System.out.println(h.getId());
+            System.out.println(h.getNgayXuatDon());
+            System.out.println(h.getMaNV());
+            System.out.println(h.getMaKH());
+            System.out.println(h.getMaCN());
+            System.out.println(h.getTienNhan());
+            System.out.println(h.getGiaTriCuoi());
+        }                               
+    }                    
 }
