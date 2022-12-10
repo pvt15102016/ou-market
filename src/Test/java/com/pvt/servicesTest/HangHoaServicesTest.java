@@ -70,7 +70,7 @@ public class HangHoaServicesTest {
         Assertions.assertEquals(1, hhsv.getListHangHoa().get(0).getId());
     }
     
-   @Test
+    @Test
     public void testGetListHangHoa() throws SQLException {
         List<HangHoa> hangHoa = hhsv.getListHangHoa();
         

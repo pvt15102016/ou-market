@@ -3,6 +3,7 @@
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ButtonBar?>
+<?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.Tab?>
@@ -14,7 +15,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="640.0" prefWidth="1036.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.pvt.oumarket.FHomeController">
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="640.0" prefWidth="1036.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.pvt.oumarket.FHomeController">
    <children>
       <HBox maxHeight="150.0" prefHeight="50.0" prefWidth="1024.0" style="-fx-background-color: white;">
          <children>
@@ -378,7 +379,7 @@
                      <children>
                         <VBox layoutX="14.0" layoutY="14.0" prefHeight="270.0" prefWidth="120.0">
                            <children>
-                              <Label prefHeight="40.0" prefWidth="100.0" text="Mã hàng hóa">
+                              <Label prefHeight="34.0" prefWidth="100.0" text="Mã hàng hóa">
                                  <VBox.margin>
                                     <Insets bottom="5.0" />
                                  </VBox.margin>
@@ -404,27 +405,15 @@
                               </Label>
                            </children>
                         </VBox>
-                        <VBox layoutX="134.0" layoutY="14.0" prefHeight="270.0" prefWidth="300.0">
+                        <VBox layoutX="134.0" prefHeight="270.0" prefWidth="310.0">
                            <children>
-                              <TextField prefHeight="40.0">
-                                 <VBox.margin>
-                                    <Insets bottom="5.0" />
-                                 </VBox.margin>
-                              </TextField>
-                              <TextField prefHeight="40.0">
-                                 <VBox.margin>
-                                    <Insets bottom="5.0" />
-                                 </VBox.margin>
-                              </TextField>
-                              <TextField prefHeight="40.0" promptText="Nhập số lượng">
-                                 <VBox.margin>
-                                    <Insets bottom="5.0" />
-                                 </VBox.margin>
-                              </TextField>
-                              <ButtonBar prefHeight="40.0" prefWidth="200.0" />
+                              <ButtonBar prefHeight="40.0" prefWidth="330.0" />
+                              <ComboBox fx:id="cbHH" prefHeight="2.0" prefWidth="310.0" />
+                              <ComboBox fx:id="cbCN" prefHeight="14.0" prefWidth="310.0" />
+                              <TextField fx:id="txtQuantity" prefHeight="40.0" promptText="Nhập số lượng" />
                            </children>
                         </VBox>
-                        <Button layoutX="14.0" layoutY="281.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="127.0" text="Thêm hàng hóa">
+                        <Button layoutX="14.0" layoutY="281.0" mnemonicParsing="false" onAction="#themHHTrongCN" prefHeight="50.0" prefWidth="127.0" text="Thêm hàng hóa">
                            <font>
                               <Font size="14.0" />
                            </font>
@@ -449,7 +438,7 @@
                               <Font size="14.0" />
                            </font>
                         </TextField>
-                        <TableView layoutX="471.0" layoutY="106.0" prefHeight="430.0" prefWidth="550.0" />
+                        <TableView fx:id="tbQLHH" layoutX="471.0" layoutY="106.0" prefHeight="430.0" prefWidth="550.0" />
                      </children>
                   </AnchorPane>
               </content>
@@ -598,34 +587,34 @@
                         </VBox>
                         <VBox layoutX="161.0" layoutY="14.0" prefHeight="270.0" prefWidth="280.0">
                            <children>
-                              <TextField prefHeight="40.0" promptText="Nhập mã khách hàng">
+                              <TextField fx:id="txtMaKH" prefHeight="40.0" promptText="Nhập mã khách hàng">
                                  <VBox.margin>
                                     <Insets bottom="5.0" />
                                  </VBox.margin>
                               </TextField>
-                              <TextField prefHeight="40.0" promptText="Nhập tên khách hàng">
+                              <TextField fx:id="txtTenKH" prefHeight="40.0" promptText="Nhập tên khách hàng">
                                  <VBox.margin>
                                     <Insets bottom="5.0" />
                                  </VBox.margin>
                               </TextField>
-                              <DatePicker prefHeight="40.0" prefWidth="281.0" promptText="Chọn ngày tham gia">
+                              <DatePicker fx:id="txtNgaySinhKH" prefHeight="40.0" prefWidth="281.0" promptText="Chọn ngày tham gia">
                                  <VBox.margin>
                                     <Insets bottom="5.0" />
                                  </VBox.margin>
                               </DatePicker>
-                              <TextField prefHeight="40.0" promptText="Nhập số điện thoại">
+                              <TextField fx:id="txtSDTKH" prefHeight="40.0" promptText="Nhập số điện thoại">
                                  <VBox.margin>
                                     <Insets bottom="5.0" />
                                  </VBox.margin>
                               </TextField>
-                              <TextField prefHeight="40.0" promptText="Nhập số CMND">
+                              <TextField fx:id="txtCMNDKH" prefHeight="40.0" promptText="Nhập số CMND">
                                  <VBox.margin>
                                     <Insets bottom="5.0" />
                                  </VBox.margin>
                               </TextField>
                            </children>
                         </VBox>
-                        <Button layoutX="10.0" layoutY="388.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="130.0" text="Thêm khách hàng">
+                        <Button layoutX="10.0" layoutY="388.0" mnemonicParsing="false" onAction="#addKhachHang" prefHeight="50.0" prefWidth="130.0" text="Thêm khách hàng">
                            <font>
                               <Font size="14.0" />
                            </font>
@@ -640,13 +629,13 @@
                               <Font size="14.0" />
                            </font>
                         </Button>
-                        <TableView layoutX="475.0" layoutY="100.0" prefHeight="430.0" prefWidth="550.0" />
+                        <TableView fx:id="tbKhachHang" layoutX="475.0" layoutY="100.0" prefHeight="430.0" prefWidth="550.0" />
                         <Label layoutX="475.0" layoutY="14.0" prefHeight="40.0" prefWidth="350.0" text="Danh sách khách hàng">
                            <font>
                               <Font size="14.0" />
                            </font>
                         </Label>
-                        <TextField layoutX="475.0" layoutY="54.0" prefHeight="26.0" prefWidth="550.0" promptText="Nhập tên khách hàng để tìm kiếm">
+                        <TextField fx:id="keyWordKH" layoutX="475.0" layoutY="54.0" prefHeight="26.0" prefWidth="550.0" promptText="Nhập tên khách hàng để tìm kiếm">
                            <font>
                               <Font size="14.0" />
                            </font>

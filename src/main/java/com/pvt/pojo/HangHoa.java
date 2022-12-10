@@ -47,4 +47,8 @@ public class HangHoa {
     public void setDonGia(int donGia){
         this.donGia = donGia;
     }
+    @Override
+    public String toString() {
+        return id + "." + tenHangHoa; 
+    }
 }

@@ -6,6 +6,7 @@ package com.pvt.services;
 
 import com.pvt.pojo.QuanLyHang;
 import com.pvt.utils.JDBCUtils;
+import com.pvt.utils.Utils;
 import java.math.BigDecimal;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -13,22 +14,41 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+import javafx.scene.control.Alert;
 
 
 public class QuanLyHangServices {
-//    public void ThemHangHoaTrongChiNhanh(QuanLyHang x) throws SQLException{
-//        try(Connection conn = JDBCUtils.getConn()){
-//            PreparedStatement stm = conn.prepareStatement("INSERT hanghoa_thuoc_chinhanh (MaTiec, MaDV)\n" +
-//                " VALUES(?, ?)");
-//            PreparedStatement stm1 = conn.prepareStatement(
-//                "call thanhTienHoaDon(?)");
-//            stm.setInt(1, d.getMaTiec());
-//            stm.setInt(2, d.getMaDV());
-//            stm1.setInt(1, d.getMaTiec());
-//            stm.executeUpdate();
-//            stm1.executeUpdate();
-//        }
-//    }
+    public boolean ThemHangHoaTrongChiNhanh(QuanLyHang x) throws SQLException{
+        try(Connection conn = JDBCUtils.getConn()){
+            PreparedStatement stm = conn.prepareStatement("INSERT hanghoa_thuoc_chinhanh (hanghoa_id, chinhanh_id, soluong)\n" +
+                " VALUES(?, ?, ?)");
+            stm.setInt(1, x.getMaHangHoa());
+            stm.setInt(2, x.getMaChiNhanh());
+            stm.setFloat(3, x.getSoLuong());
+            stm.executeUpdate();
+            
+            return true;
+        }catch (Exception e){
+            return false;
+        }  
+    }
+    public List<QuanLyHang> getListQLHangHoa()  throws SQLException {
+        List<QuanLyHang> listQLHangHoa = new ArrayList<>();
+        try ( Connection conn = JDBCUtils.getConn()) {
+            String sql = "SELECT * FROM hanghoa_thuoc_chinhanh";
+            PreparedStatement stm = conn.prepareStatement(sql);
+            ResultSet rs = stm.executeQuery();
+            while (rs.next()) {
+                QuanLyHang qlhh = new QuanLyHang(
+                        rs.getInt("hanghoa_id"),
+                        rs.getInt("chinhanh_id"),
+                        rs.getFloat("soluong")
+                );
+                listQLHangHoa.add(qlhh);
+            }
+        }
+        return listQLHangHoa;
+    }
 //    public void xoaDatDichVu(DatDichVu d) throws SQLException{
 //        try(Connection conn = JdbcUtils.getConn()){
 //            PreparedStatement stm = conn.prepareStatement("delete from DATDICHVU \n" +
@@ -44,7 +64,7 @@ public class QuanLyHangServices {
 //    }
 //    public int getTongDichVu(int maTiec) throws SQLException{
 //        int soLuong = 0 ;
-//        try(Connection conn = JdbcUtils.getConn()){ 
+//        try(Connection conn = JDBCUtils.getConn()){ 
 //            PreparedStatement stm = conn.prepareStatement("SELECT IFNULL(Count(*), 0) FROM datdichvu WHERE MaTiec = ?");
 //            stm.setInt(1, maTiec);
 //            ResultSet rs = stm.executeQuery();
@@ -55,7 +75,7 @@ public class QuanLyHangServices {
 //    }
 //    public BigDecimal getThanhTienDichVu(int maTiec) throws SQLException{
 //        BigDecimal thanhTien = BigDecimal.ZERO ;
-//        try(Connection conn = JdbcUtils.getConn()){ 
+//        try(Connection conn = JDBCUtils.getConn()){ 
 //            PreparedStatement stm = conn.prepareStatement("SELECT IFNULL(SUM(d.DonGia), 0) FROM dichvu d, datdichvu dd WHERE d.maDV = dd.MaDV AND dd.MaTiec = ?");
 //            stm.setInt(1, maTiec);
 //            ResultSet rs = stm.executeQuery();

@@ -49,25 +49,6 @@ public class HoaDonServicesTest {
         }
     }
     
-//    public void testSuccessupdateHH_DH() throws SQLException {
-//        try {
-//            hd.upDateHH_DH("feda63ff-59d8-4130-ba81-912f10928345", "4");
-//            try (Connection conn = JDBCutils.getConn()) {
-//                Statement stm = conn.createStatement();
-//                ResultSet rs = stm.executeQuery("SELECT idHangHoa FROM donhang_hanghoa WHERE idDonHang='feda63ff-59d8-4130-ba81-912f10928345'");
-//                String hanghoa = "";
-//                while (rs.next()) {
-//                    hanghoa = rs.getString("idHangHoa");
-//
-//                }
-//                Assertions.assertEquals("4", hanghoa);
-//
-//            }
-//        } catch (SQLException ex) {
-//            Logger.getLogger(HoaDonServicesTest.class.toString()).log(Level.SEVERE, null, ex);
-//
-//        }
-//    }
     @Test
     public void testGetListHoaDon() throws SQLException{
     

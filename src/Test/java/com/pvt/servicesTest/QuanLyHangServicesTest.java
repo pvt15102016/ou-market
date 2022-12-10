@@ -48,5 +48,30 @@ public class QuanLyHangServicesTest {
         }
     }
     
+    @Test
+    public void testGetListQLHangHoa() throws SQLException {
+        List<QuanLyHang> QuanLyHang = quanly.getListQLHangHoa();
+        
+        for (QuanLyHang h:QuanLyHang){
+            System.out.println(h.getMaHangHoa());
+            System.out.println(h.getMaChiNhanh());
+            System.out.println(h.getSoLuong());
+        }
+    }
     
+    @Test
+    public void testSuccessThemHangHoaTrongChiNhanh() throws Exception{
+        QuanLyHang qlhh = new QuanLyHang(5, 2, 3);
+        boolean b  = quanly.ThemHangHoaTrongChiNhanh(qlhh);
+        
+        Assertions.assertTrue(b);
+    }
+    
+    @Test
+    public void testFailerThemHangHoaTrongChiNhanh() throws Exception{
+        QuanLyHang qlhh = new QuanLyHang(1, 2, 3);
+        boolean b  = quanly.ThemHangHoaTrongChiNhanh(qlhh);
+        
+        Assertions.assertFalse(b);
+    }
 }

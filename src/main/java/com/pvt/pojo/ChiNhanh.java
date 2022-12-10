@@ -40,4 +40,9 @@ public class ChiNhanh {
     public void setDiaChi(String diaChi){
         this.diaChi = diaChi;
     }
+    
+    @Override
+    public String toString() {
+        return id + "." + tenChiNhanh; 
+    }
 }
