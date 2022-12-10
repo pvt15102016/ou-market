@@ -46,7 +46,7 @@ public class KhachHangServicesTest {
             Logger.getLogger(KhachHangServicesTest.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-  
+    
     @Test
     public void testGetListKhachHang() throws SQLException {
         String kw = "Ly";

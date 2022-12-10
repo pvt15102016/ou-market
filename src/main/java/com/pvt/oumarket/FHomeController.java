@@ -10,8 +10,10 @@ import com.pvt.pojo.ChiTietHoaDon;
 import com.pvt.pojo.ChucVu;
 import com.pvt.pojo.HangHoa;
 import com.pvt.pojo.HoaDon;
+import com.pvt.pojo.KhachHang;
 import com.pvt.pojo.KhuyenMai;
 import com.pvt.pojo.NhanVien;
+import com.pvt.pojo.QuanLyHang;
 import com.pvt.services.ChiNhanhServices;
 import com.pvt.services.ChiTietHoaDonServices;
 import com.pvt.services.ChucVuServices;
@@ -20,9 +22,9 @@ import com.pvt.services.HoaDonServices;
 import com.pvt.services.KhachHangServices;
 import com.pvt.services.KhuyenMaiServices;
 import com.pvt.services.NhanVienServices;
+import com.pvt.services.QuanLyHangServices;
 import com.pvt.services.UserServices;
 import com.pvt.utils.Utils;
-import java.util.Date;
 import java.io.IOException;
 import java.net.URL;
 import java.security.interfaces.RSAKey;
@@ -68,6 +70,8 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.Image;
 import javafx.stage.Stage;
+import java.time.ZoneId;
+import java.util.List;
 /**
  * FXML Controller class
  *
@@ -75,6 +79,7 @@ import javafx.stage.Stage;
  */
 public class FHomeController implements Initializable {
     public float totalvalue;
+    private LocalDate dateThamGia = LocalDate.now();
     /**
      * Initializes the controller class.
      */
@@ -90,6 +95,8 @@ public class FHomeController implements Initializable {
     @FXML private TextField txtMaCN;
     @FXML private TableView tbChiNhanh;
     @FXML private TextField keyWordCN;
+    @FXML private ComboBox<ChiNhanh> cbCN;
+    
     /*
     Hàng hóa
     */
@@ -99,6 +106,7 @@ public class FHomeController implements Initializable {
     @FXML private TextField txtDonGia;
     @FXML private TableView tbHangHoa;
     @FXML private TextField keyWordHH;
+    @FXML private ComboBox<HangHoa> cbHH;
     /*
     Nhân viên
     */
@@ -114,6 +122,7 @@ public class FHomeController implements Initializable {
     @FXML private TextField txtMaTK_user;
     @FXML private TableView tbNhanVien;
     @FXML private TextField keyWordNV;
+    
     
     /*
     Khuyến mãi
@@ -148,6 +157,22 @@ public class FHomeController implements Initializable {
     public void getThisId(int id){
         this.userid = id;
     }
+    
+//    Khách hàng
+    @FXML private TextField txtMaKH;
+    @FXML private TextField txtTenKH;
+    @FXML private DatePicker txtNgaySinhKH;
+    @FXML private TextField txtSDTKH;
+    @FXML private TextField txtCMNDKH;
+    @FXML private TableView tbKhachHang;
+    @FXML private TextField keyWordKH;
+    
+    /*
+    Quản lý hàng hóa
+    */
+    @FXML private TextField txtQuantity;
+    @FXML private TableView tbQLHH;
+    
     /*
     Xử lý hàm
     */
@@ -164,6 +189,7 @@ public class FHomeController implements Initializable {
         ChiTietHoaDon ctsv = new ChiTietHoaDon();
         HoaDonServices hdsv = new HoaDonServices();
         try {
+            
             lbStatus.setText("Welcome, "+ usv.getUserName(userid));
 //            NhanVienTab.setDisable(true);
 //            ChiNhanhTab.setDisable(true);
@@ -188,12 +214,15 @@ public class FHomeController implements Initializable {
         MouseClickTBVHangHoa();
         MouseClickTBVKhuyenMai();
         MouseClickTBVCTHD();
+        MouseClickTBVKhachHang();
         
         loadTableViewChiNhanh();
         loadTableViewNhanVien();
         loadTableViewHangHoa();
         loadTableViewKhuyenMai();
         loadTableViewChiTietHoaDon();
+        loadTableViewKhachHang();
+        loadTableViewQuanLyHang();
         
         
         try {
@@ -201,7 +230,9 @@ public class FHomeController implements Initializable {
             this.loadTableNV(null);
             this.loadTableHH(null);
             this.loadTableKM(null);
-            
+            this.loadTableKH(null);
+            this.loadCombobox();
+            this.loadTableQLHH();
             
         } catch (SQLException ex) {
             Logger.getLogger(FHomeController.class.getName()).log(Level.SEVERE, null, ex);
@@ -231,6 +262,13 @@ public class FHomeController implements Initializable {
         this.keyWordKM.textProperty().addListener((evt)->{
             try {
                 this.loadTableKM(this.keyWordKM.getText());
+            } catch (SQLException ex) {
+                Logger.getLogger(FHomeController.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        });
+        this.keyWordKH.textProperty().addListener((evt)->{
+            try {
+                this.loadTableKH(this.keyWordKH.getText());
             } catch (SQLException ex) {
                 Logger.getLogger(FHomeController.class.getName()).log(Level.SEVERE, null, ex);
             }
@@ -428,6 +466,28 @@ public class FHomeController implements Initializable {
                   return rowHoangHoa;
               });
         }
+    
+    private void MouseClickTBVKhachHang(){
+              tbKhachHang.setRowFactory((tbv) -> {
+                  TableRow<KhachHang> rowKH = new TableRow<>();
+                  rowKH.setOnMouseClicked((event) -> {
+                    if(event.getClickCount() != 0 && (!rowKH.isEmpty())){
+                      KhachHang rowData = rowKH.getItem();
+                      this.txtMaKH.clear();
+                      this.txtMaKH.appendText(String.valueOf(rowData.getId()));
+                      this.txtTenKH.clear();
+                      this.txtTenKH.appendText(String.valueOf(rowData.getTenKH()));
+                      this.txtNgaySinhKH.setValue(null);
+                      this.txtNgaySinhKH.setValue((LocalDate)rowData.getNgaySinh().toLocalDate());
+                      this.txtSDTKH.clear();
+                      this.txtSDTKH.appendText(String.valueOf(rowData.getSDT()));
+                      this.txtCMNDKH.clear();
+                      this.txtCMNDKH.appendText(String.valueOf(rowData.getCmnd()));
+            };
+        });
+                  return rowKH;
+              });
+        }
     private void loadTableViewHangHoa(){
         TableColumn colIdHH = new TableColumn("Id hàng hóa");
         colIdHH.setCellValueFactory(new PropertyValueFactory("id"));
@@ -447,6 +507,48 @@ public class FHomeController implements Initializable {
         colDonGia.setPrefWidth(150);
 
         this.tbHangHoa.getColumns().addAll(colIdHH, colTenHH, colXuatXu, colDonGia);
+    }
+    private void loadTableViewKhachHang(){
+        TableColumn colIdKH = new TableColumn("Id khách hàng");
+        colIdKH.setCellValueFactory(new PropertyValueFactory("id"));
+        colIdKH.setPrefWidth(100);
+
+        TableColumn colTenKH = new TableColumn("Tên khách hàng");
+        colTenKH.setCellValueFactory(new PropertyValueFactory("tenKH"));
+        colTenKH.setPrefWidth(100);
+
+
+        TableColumn colNgaySinh =  new TableColumn("Ngày sinh");
+        colNgaySinh.setCellValueFactory(new PropertyValueFactory("ngaySinh"));
+        colNgaySinh.setPrefWidth(150);
+
+        TableColumn colSDT =  new TableColumn("So dien thoai");
+        colSDT.setCellValueFactory(new PropertyValueFactory("soDienThoai"));
+        colSDT.setPrefWidth(150);
+        
+        TableColumn colCMND =  new TableColumn("CMND");
+        colCMND.setCellValueFactory(new PropertyValueFactory("cmnd"));
+        colCMND.setPrefWidth(150);
+
+        this.tbKhachHang.getColumns().addAll(colIdKH, colTenKH, colNgaySinh, colSDT, colCMND);
+    }
+    private void loadTableViewQuanLyHang(){
+        TableColumn colIdHH = new TableColumn("Mã hàng hóa");
+        colIdHH.setCellValueFactory(new PropertyValueFactory("maHangHoa"));
+        colIdHH.setPrefWidth(100);
+
+        TableColumn colIdCN = new TableColumn("Mã chi nhánh");
+        colIdCN.setCellValueFactory(new PropertyValueFactory("maChiNhanh"));
+        colIdCN.setPrefWidth(100);
+
+
+        TableColumn colSoLuongHH =  new TableColumn("Số lượng");
+        colSoLuongHH.setCellValueFactory(new PropertyValueFactory("soLuong"));
+        colSoLuongHH.setPrefWidth(150);
+
+        
+
+        this.tbQLHH.getColumns().addAll(colIdHH, colIdCN, colSoLuongHH);
     }
     public void xoaHangHoaHandler(ActionEvent event) throws SQLException{
         if(txtMaHH.getText().length() > 0 && txtMaHH.getText().length() > 0 &&
@@ -1008,6 +1110,40 @@ public class FHomeController implements Initializable {
           }
           tbChiTietHoaDon.getItems().clear();
     }
+      public void addKhachHang(ActionEvent event) throws SQLException, IOException{
+        KhachHang kh = new KhachHang();
+//        ZoneId defaultZoneId = ZoneId.systemDefault();
+        if (txtMaKH.getText().matches("[0-9]")&& (txtMaKH.getText().length()>0)&&
+                txtNgaySinhKH.getValue().toString()!=null &&
+                 (txtCMNDKH.getText().length()>0))
+                
+        {
+            kh.setId(Integer.parseInt(txtMaKH.getText()));
+            kh.setTenKH(txtTenKH.getText());
+            kh.setNgaySinh(java.sql.Date.valueOf(txtNgaySinhKH.getValue()));
+            kh.setSDT(txtSDTKH.getText());
+//            Instant instant = dateThamGia.atStartOfDay().atZone(ZoneId.systemDefault()).toInstant();
+//            kh.setNgayThamGia((java.sql.Date) Date.from(instant));
+            kh.setCmnd(txtCMNDKH.getText());
+            try {
+                KhachHangServices khs = new KhachHangServices();
+                khs.ThemKhachHang(kh);
+                
+                this.loadTableKH(null);
+                this.txtMaKH.setText(null);
+                this.txtTenKH.setText(null);
+                this.txtNgaySinhKH.setValue(null);
+                this.txtSDTKH.setText(null);
+                this.txtCMNDKH.setText(null);
+                loadTableKH(null);
+            } catch (SQLException ex) {
+                Utils.showBox("Add khach hang thất bại!", Alert.AlertType.WARNING).show();
+            } 
+        }
+        else{
+            Utils.showBox("Nhập sai định dạng!", Alert.AlertType.WARNING).show();
+        }
+    }
         
      
      private void loadTableCN(String kw) throws SQLException{
@@ -1029,5 +1165,30 @@ public class FHomeController implements Initializable {
     private void loadTableCTHD(String kw) throws SQLException{
         ChiTietHoaDonServices cthds = new ChiTietHoaDonServices();
         this.tbChiTietHoaDon.setItems(FXCollections.observableList(cthds.TimCTHD(kw)));
+    }
+    private void loadTableKH(String kw) throws SQLException{
+        KhachHangServices kh = new KhachHangServices();
+        this.tbKhachHang.setItems(FXCollections.observableList(kh.getListKhachHang(kw)));
+    }
+     private void loadTableQLHH() throws SQLException{
+        QuanLyHangServices qlhh = new QuanLyHangServices();
+        this.tbQLHH.setItems(FXCollections.observableList(qlhh.getListQLHangHoa()));
+    }
+    
+    public void loadCombobox() throws SQLException {
+        ChiNhanhServices chiNhanhSV = new ChiNhanhServices();
+        HangHoaServices hangHoaSV = new HangHoaServices();
+        List<ChiNhanh> listChiNhanh = chiNhanhSV.getChiNhanh();
+        List<HangHoa> listHangHoa = hangHoaSV.getListHangHoa();
+        
+        cbCN.setItems(FXCollections.observableList(listChiNhanh));
+        cbHH.setItems(FXCollections.observableList(listHangHoa));
+    }
+    
+    public void themHHTrongCN() throws SQLException {
+        QuanLyHangServices qlHHSV = new QuanLyHangServices();
+        QuanLyHang qlH = new QuanLyHang(cbCN.getValue().getId(), cbHH.getValue().getId(), Float.parseFloat(txtQuantity.getText()));
+        qlHHSV.ThemHangHoaTrongChiNhanh(qlH);
+        loadTableQLHH();
     }
 }

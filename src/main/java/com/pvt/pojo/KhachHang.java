@@ -66,4 +66,8 @@ public class KhachHang {
     public void setNgaySinh(Date ngaySinh){
         this.ngaySinh = ngaySinh;
     }
+    @Override
+    public String toString() {
+        return id + "." + tenKH; 
+    }
 }
