@@ -64,10 +64,20 @@ public class HangHoaServicesTest {
     
     @Test
     public void testSuccessXoaHangHoa() throws Exception{
-        HangHoa hh = new HangHoa(40, "Sting", "Ho Chi Minh", 50000);
+        HangHoa hh = new HangHoa(4, "Sting", "Ho Chi Minh", 50000);
         hhsv.xoaHangHoa(hh);
-        
-        Assertions.assertEquals(1, hhsv.getListHangHoa().get(0).getId());
+        Assertions.assertFalse(hhsv.getListHangHoa().contains(hh));
+    }
+    
+    @Test
+    public void testFailerXoaHangHoa() throws Exception {
+        HangHoa hH = new HangHoa(23, "trà sữa", "hồ chí minh", 50000);
+        try {
+            hhsv.xoaHangHoa(hH);
+            Assertions.assertFalse(hhsv.getListHangHoa().contains(hH));
+        } catch (SQLException e) {
+            Assertions.assertTrue(hhsv.getListHangHoa().contains(hH));
+        }
     }
     
     @Test
@@ -81,4 +91,25 @@ public class HangHoaServicesTest {
             System.out.println(h.getDonGia());
         }
     }
+    
+    @Test
+    public void testSuccessCapNhatHangHoa() throws SQLException {
+        
+        HangHoa hangH = new HangHoa(4, "Hồng trà", "Khanh Hoa", 10000);
+        hhsv.suaHangHoa(hangH);
+
+        Assertions.assertTrue(hhsv.getListHangHoa().contains(hangH));
+       
+    }
+    
+    @Test
+    public void testFailCapNhatHangHoa() throws SQLException {
+        
+        HangHoa hangH = new HangHoa(4, "Hồng trà", "Khanh Hoa", 10000);
+        hhsv.suaHangHoa(hangH);
+
+        Assertions.assertFalse(hhsv.getListHangHoa().contains(hangH));
+    }
+    
+    
 }

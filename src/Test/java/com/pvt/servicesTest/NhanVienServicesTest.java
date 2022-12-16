@@ -64,5 +64,67 @@ public class NhanVienServicesTest {
             System.out.println(n.getTienLuong());
         }
     }
-
+    
+//    @Test
+//    public void testSuccessThemNhanVien() throws Exception{
+//        NhanVien nV = new NhanVien(99, "String", "Ho Chi Minh", 50000);
+//        nvsv.ThemNhanVien(nV);
+//        
+//        Assertions.assertEquals(1, hhsv.getListNhanVien().get(0).getId());
+//    }
+//    
+    @Test
+    public void testSuccessTimNhanVien() throws Exception{
+        String kw = "Bảo";
+        List<NhanVien> NhanVien = nvsv.TimNhanVien(kw);
+        for(NhanVien n:NhanVien){
+            Assertions.assertTrue(n.getHoTen().toLowerCase().contains(kw.toLowerCase()));
+        }
+    }
+    
+    @Test
+    public void testSuccessXoaNhanVien() throws Exception {
+        NhanVien nhanVien = new NhanVien();
+        nhanVien.setId(7);
+        nvsv.XoaNhanVien(nhanVien);
+        try ( Connection conn = JDBCUtils.getConn()) {
+            String sql = "SELECT * FROM nhanvien Where id = ?";
+            PreparedStatement stm = conn.prepareStatement(sql);
+            stm.setString(1, Integer.toString(7));
+            ResultSet rs = stm.executeQuery();
+            while (rs.next()){
+                Assertions.assertNotEquals(7, rs.getInt("id"));
+            }
+        }
+    }
+    
+//    @Test
+//    public void testFailerXoaNhanVien() throws Exception {
+//        NhanVien hH = new NhanVien(23, "trà sữa", "hồ chí minh", 50000);
+//        try {
+//            hhsv.xoaNhanVien(hH);
+//            Assertions.assertFalse(hhsv.getListNhanVien().contains(hH));
+//        } catch (SQLException e) {
+//            Assertions.assertTrue(hhsv.getListNhanVien().contains(hH));
+//        }
+//    }
+//    
+//    @Test
+//    public void testSuccessCapNhatNhanVien() throws SQLException {
+//        
+//        NhanVien hangH = new NhanVien(4, "Hồng trà", "Khanh Hoa", 10000);
+//        hhsv.suaNhanVien(hangH);
+//
+//        Assertions.assertTrue(hhsv.getListNhanVien().contains(hangH));
+//       
+//    }
+//    
+//    @Test
+//    public void testFailCapNhatNhanVien() throws SQLException {
+//        
+//        NhanVien hangH = new NhanVien(4, "Hồng trà", "Khanh Hoa", 10000);
+//        hhsv.suaNhanVien(hangH);
+//
+//        Assertions.assertFalse(hhsv.getListNhanVien().contains(hangH));
+//    }
 }
