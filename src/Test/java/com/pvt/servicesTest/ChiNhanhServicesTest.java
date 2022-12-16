@@ -96,4 +96,53 @@ public class ChiNhanhServicesTest {
         }
     }
     
+    @Test
+    public void testSuccessCapNhatChiNhanh() throws SQLException {
+        
+        ChiNhanh cn = new ChiNhanh(100, "Chi Nhánh 1", "97 Vo Van Tan");
+        chiNhanhSV.CapNhatChiNhanh(cn);
+
+        String sql = "SELECT tenchinhanh FROM chinhanh WHERE id = ?";
+
+        PreparedStatement stm = conn.prepareStatement(sql);
+        stm.setInt(1, 100);
+        ResultSet rs = stm.executeQuery();
+        while (rs.next()) {
+            Assertions.assertEquals(cn.getTenChiNhanh(), rs.getString("tenchinhanh"));
+        }
+    }
+    
+    @Test
+    public void testFailerCapNhatChiNhanh() throws SQLException {
+        ChiNhanh cn = new ChiNhanh(10, "Chi Nhánh 2", "97 Vo Van Tan");
+        chiNhanhSV.CapNhatChiNhanh(cn);
+
+        String sql = "SELECT tenchinhanh FROM chinhanh WHERE id = ?";
+
+        PreparedStatement stm = conn.prepareStatement(sql);
+        stm.setInt(1, 10);
+        ResultSet rs = stm.executeQuery();
+        while (rs.next()) {
+            Assertions.assertNotEquals(cn.getTenChiNhanh(), rs.getString("tenchinhanh"));
+        }
+    }
+    
+    @Test
+    public void testSuccessXoaChiNhanh() throws Exception{
+        ChiNhanh cnhanh = new ChiNhanh(8, "VVT", "Ho Chi Minh");
+        chiNhanhSV.XoaChiNhanh(cnhanh);
+        Assertions.assertFalse(chiNhanhSV.getChiNhanh().contains(cnhanh));
+    }
+    
+    @Test
+    public void testFailerXoaChiNhanh() throws Exception {
+        ChiNhanh cNhanh = new ChiNhanh(23, "trà sữa", "hồ chí minh");
+        try {
+            chiNhanhSV.XoaChiNhanh(cNhanh);
+            Assertions.assertFalse(chiNhanhSV.getChiNhanh().contains(cNhanh));
+        } catch (SQLException e) {
+            Assertions.assertTrue(chiNhanhSV.getChiNhanh().contains(cNhanh));
+        }
+    }
+    
 }

@@ -319,7 +319,7 @@ public class FHomeController implements Initializable {
  //Chi nhánh
        public void addChiNhanh(ActionEvent event) throws SQLException{
         ChiNhanh cn = new ChiNhanh();
-        if (txtMaCN.getText().matches("[0-9]") && txttenchinhanh.getText().length()>0 && txtdiachi.getText().length()>0)
+        if (txttenchinhanh.getText().length()>0 && txtdiachi.getText().length()>0)
         {
             cn.setId(Integer.parseInt(txtMaCN.getText()));
             cn.setTenChiNhanh(txttenchinhanh.getText());
@@ -360,7 +360,7 @@ public class FHomeController implements Initializable {
  }
         public void CapNhatChiNhanh(ActionEvent event) throws SQLException{
            ChiNhanh newcn = new ChiNhanh();
-           if (txtMaCN.getText().matches("[0-9]") && txttenchinhanh.getText().length()>0 && txtdiachi.getText().length()>0)
+           if (txttenchinhanh.getText().length()>0 && txtdiachi.getText().length()>0)
            {
             try{
                 ChiNhanhServices sv = new ChiNhanhServices();
